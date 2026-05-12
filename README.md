@@ -11,7 +11,7 @@ A mobile-first PWA for tracking hunting, fishing, and diving locations offline. 
 - **GeoJSON export** — back up all your pins to a file on demand
 - **Installable** — "Add to Home Screen" in Chrome for a native app feel
 
-## Setup
+## Running locally
 
 ```bash
 npm install

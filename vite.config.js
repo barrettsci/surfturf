@@ -6,8 +6,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Map App',
-        short_name: 'Map App',
+        name: 'SurfTurf',
+        short_name: 'SurfTurf',
         description: 'Offline-capable map for hunting, fishing, and diving POIs',
         theme_color: '#2c3e50',
         background_color: '#1a1a2e',

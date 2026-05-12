@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#2c3e50" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Map App</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="map"></div>
+
+      <!-- Backup nudge banner -->
+      <div id="backup-banner" class="hidden">
+        <span>Last backup was over 14 days ago. Export your pins?</span>
+        <div class="banner-actions">
+          <button id="banner-export-btn">Export</button>
+          <button id="banner-dismiss-btn">Dismiss</button>
+        </div>
+      </div>
+
+      <!-- Top toolbar -->
+      <div id="toolbar">
+        <button id="profile-btn" class="toolbar-btn" title="Switch profile">
+          <span id="profile-label">Profile</span>
+        </button>
+        <button id="satellite-btn" class="toolbar-btn" title="Toggle satellite">
+          Satellite
+        </button>
+        <button id="locate-btn" class="toolbar-btn" title="My location">&#8982;</button>
+        <button id="hunting-btn" class="toolbar-btn" title="Toggle Sambar Deer hunting areas">Hunting</button>
+        <button id="export-btn" class="toolbar-btn" title="Export GeoJSON">Export</button>
+      </div>
+
+      <!-- FAB: add pin -->
+      <button id="fab" title="Add pin">+</button>
+
+      <!-- Pin-drop mode overlay message -->
+      <div id="pin-drop-hint" class="hidden">Tap map to place pin &nbsp;<button id="cancel-pin-btn">Cancel</button></div>
+
+      <!-- Category bottom sheet -->
+      <div id="category-sheet" class="sheet hidden">
+        <div class="sheet-handle"></div>
+        <h3 id="sheet-profile-name">Select Category</h3>
+        <div id="category-grid"></div>
+        <button id="sheet-cancel-btn" class="sheet-cancel">Cancel</button>
+      </div>
+
+      <!-- POI detail bottom sheet -->
+      <div id="poi-sheet" class="sheet hidden">
+        <div class="sheet-handle"></div>
+        <div id="poi-sheet-content"></div>
+      </div>
+
+      <!-- Profile switcher sheet -->
+      <div id="profile-sheet" class="sheet hidden">
+        <div class="sheet-handle"></div>
+        <h3>Profiles</h3>
+        <div id="profile-list"></div>
+        <div id="visibility-toggles"></div>
+        <button id="profile-sheet-close" class="sheet-cancel">Done</button>
+      </div>
+
+      <!-- Sheet backdrop -->
+      <div id="sheet-backdrop" class="hidden"></div>
+
+      <!-- Offline areas manager button -->
+      <button id="offline-btn" class="toolbar-btn-float" title="Offline maps">&#8681; Offline</button>
+
+      <!-- Offline areas sheet -->
+      <div id="offline-sheet" class="sheet hidden">
+        <div class="sheet-handle"></div>
+        <h3>Offline Maps</h3>
+        <div id="offline-areas-list"></div>
+        <div id="offline-draw-section">
+          <p>Draw a bounding box on the map to download tiles for offline use.</p>
+          <button id="offline-draw-btn">Draw Area</button>
+        </div>
+        <button id="offline-sheet-close" class="sheet-cancel">Done</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

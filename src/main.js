@@ -50,8 +50,8 @@ document.getElementById('satellite-btn').addEventListener('click', () => {
   document.getElementById('satellite-btn').textContent = on ? 'Topo' : 'Satellite';
 });
 
-document.getElementById('hunting-btn').addEventListener('click', () => {
-  const on = toggleHunting();
+document.getElementById('hunting-btn').addEventListener('click', async () => {
+  const on = await toggleHunting();
   document.getElementById('hunting-btn').classList.toggle('active', on);
 });
 

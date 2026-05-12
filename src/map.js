@@ -2,7 +2,8 @@ import L from 'leaflet';
 
 const TOPO_URL = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
 const SAT_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
-const SAMBAR_WMS = 'https://corp-gis.mapshare.vic.gov.au/arcgis/rest/services/Hunting/SambarDeerHuntingArea/MapServer/WMSServer';
+const HUNTING_COLORS = ['#e74c3c', '#e67e22', '#f1c40f', '#27ae60', '#2980b9', '#8e44ad'];
+const huntingCodeColors = {};
 
 let map = null;
 let topoLayer = null;
@@ -38,17 +39,31 @@ export function initMap() {
   return map;
 }
 
-export function toggleHunting() {
+function huntingColor(code) {
+  if (!huntingCodeColors[code]) {
+    const idx = Object.keys(huntingCodeColors).length;
+    huntingCodeColors[code] = HUNTING_COLORS[idx % HUNTING_COLORS.length];
+  }
+  return huntingCodeColors[code];
+}
+
+export async function toggleHunting() {
   if (isHuntingVisible) {
     map.removeLayer(huntingLayer);
   } else {
     if (!huntingLayer) {
-      huntingLayer = L.tileLayer.wms(SAMBAR_WMS, {
-        layers: '2,3,4,5', // layers 0 and 1 are agricultural licences
-        format: 'image/png',
-        transparent: true,
-        opacity: 0.7,
-        attribution: 'Victorian Game Management Authority',
+      const res = await fetch('/data/sambar-hunting.geojson');
+      const data = await res.json();
+      huntingLayer = L.geoJSON(data, {
+        style: feature => ({
+          color: huntingColor(feature.properties.HUNT_DEER_),
+          fillColor: huntingColor(feature.properties.HUNT_DEER_),
+          fillOpacity: 0.25,
+          weight: 1.5,
+        }),
+        onEachFeature: (feature, layer) => {
+          layer.bindTooltip(feature.properties.DESCRIPTIO || feature.properties.NAME, { sticky: true });
+        },
       });
     }
     huntingLayer.addTo(map);

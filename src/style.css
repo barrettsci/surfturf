@@ -45,6 +45,9 @@ html, body, #app {
 .toolbar-btn:hover, .toolbar-btn:active { background: rgba(255,255,255,0.12); }
 .toolbar-btn.active { background: rgba(255,255,255,0.25); }
 
+/* ── Tooltips ── */
+.leaflet-tooltip { max-width: 200px; white-space: normal; }
+
 /* ── FAB ── */
 #fab {
   position: absolute;

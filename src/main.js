@@ -1,5 +1,5 @@
 import './style.css';
-import { initMap, toggleSatellite, toggleHunting, locateUser, getMap } from './map.js';
+import { initMap, toggleSatellite, toggleHunting, getMap } from './map.js';
 import { getAllPOIs, savePOI } from './storage.js';
 import { renderPOI, removeMarker, updateMarkerPopup, setMarkerProfileVisibility } from './pins.js';
 import { exportGeoJSON, checkBackupNudge } from './export.js';
@@ -34,10 +34,17 @@ async function boot() {
 
 boot();
 
+// Default satellite on
+toggleSatellite();
+document.getElementById('satellite-toggle').checked = true;
+
 // ── Profile label ──────────────────────────────────────────────────────
 function updateProfileLabel() {
   const p = profiles.find(p => p.id === activeProfileId);
   document.getElementById('profile-label').textContent = p?.name ?? 'Profile';
+  const isHunting = activeProfileId === 'hunting';
+  document.getElementById('sambar-row').classList.toggle('hidden', !isHunting);
+  document.getElementById('sambar-divider').classList.toggle('hidden', !isHunting);
 }
 
 function getProfile(id) {
@@ -45,17 +52,13 @@ function getProfile(id) {
 }
 
 // ── Toolbar buttons ────────────────────────────────────────────────────
-document.getElementById('satellite-btn').addEventListener('click', () => {
-  const on = toggleSatellite();
-  document.getElementById('satellite-btn').textContent = on ? 'Topo' : 'Satellite';
+document.getElementById('satellite-toggle').addEventListener('change', () => {
+  toggleSatellite();
 });
 
-document.getElementById('hunting-btn').addEventListener('click', async () => {
-  const on = await toggleHunting();
-  document.getElementById('hunting-btn').classList.toggle('active', on);
+document.getElementById('hunting-toggle').addEventListener('change', async () => {
+  await toggleHunting();
 });
-
-document.getElementById('locate-btn').addEventListener('click', locateUser);
 
 document.getElementById('export-btn').addEventListener('click', async () => {
   await exportGeoJSON();

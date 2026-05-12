@@ -1,19 +1,5 @@
 [
   {
-    "id": "hunting",
-    "name": "Hunting",
-    "color": "#e67e22",
-    "categories": [
-      "Deer Sighting",
-      "Vantage Point",
-      "Trail Camera",
-      "Scrape/Rub",
-      "Bedding Area",
-      "Pellets",
-      "Game Trail"
-    ]
-  },
-  {
     "id": "fishing",
     "name": "Fishing",
     "color": "#2980b9",
@@ -30,6 +16,20 @@
     "categories": [
       "Dive Site (Possible)",
       "Dive Site (Confirmed)"
+    ]
+  },
+  {
+    "id": "hunting",
+    "name": "Hunting",
+    "color": "#e67e22",
+    "categories": [
+      "Deer Sighting",
+      "Vantage Point",
+      "Trail Camera",
+      "Scrape/Rub",
+      "Bedding Area",
+      "Pellets",
+      "Game Trail"
     ]
   }
 ]

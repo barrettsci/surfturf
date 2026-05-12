@@ -110,8 +110,9 @@ html, body, #app {
 /* ── FAB ── */
 #fab {
   position: absolute;
-  bottom: 80px;
-  right: 20px;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -128,8 +129,25 @@ html, body, #app {
   justify-content: center;
   transition: transform 0.15s;
 }
-#fab:active { transform: scale(0.92); }
+#fab:active { transform: translateX(-50%) scale(0.92); }
 #fab.hidden { display: none; }
+
+/* ── Locate float button ── */
+#locate-btn {
+  position: absolute;
+  bottom: 125px;
+  left: 20px;
+  background: rgba(30,30,50,0.85);
+  backdrop-filter: blur(8px);
+  border: none;
+  color: #e0e0e0;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 500;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
 
 /* ── Offline float button ── */
 #offline-btn {

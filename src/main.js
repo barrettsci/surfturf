@@ -1,5 +1,5 @@
 import './style.css';
-import { initMap, toggleSatellite, toggleHunting, getMap } from './map.js';
+import { initMap, toggleSatellite, toggleHunting, locateUser, getMap } from './map.js';
 import { getAllPOIs, savePOI } from './storage.js';
 import { renderPOI, removeMarker, updateMarkerPopup, setMarkerProfileVisibility } from './pins.js';
 import { exportGeoJSON, checkBackupNudge } from './export.js';
@@ -233,6 +233,7 @@ function openProfileSheet() {
 document.getElementById('profile-sheet-close').addEventListener('click', closeAllSheets);
 
 // ── Offline sheet ──────────────────────────────────────────────────────
+document.getElementById('locate-btn').addEventListener('click', locateUser);
 document.getElementById('offline-btn').addEventListener('click', () => showSheet('offline-sheet'));
 document.getElementById('offline-sheet-close').addEventListener('click', closeAllSheets);
 

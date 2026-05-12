@@ -97,7 +97,7 @@ Edit [`src/config/profiles.json`](src/config/profiles.json) to change activity t
 
 ## Sambar hunting area overlay
 
-Sambar hunting areas are sourced from https://discover.data.vic.gov.au/dataset/hunting-area-dataset-permitted-sambar-deer-hunting-view
-Download Geographicals in GDA94 as ESRI shapefiles, and convert to GeoJSON at https://mapshaper.org
-Save to public/data/sambar-hunting.geojson
-Update regularly!
+Sambar hunting areas are sourced from https://discover.data.vic.gov.au/dataset/hunting-area-dataset-permitted-sambar-deer-hunting-view  
+Download Geographicals in GDA94 as ESRI shapefiles, and convert to GeoJSON at https://mapshaper.org  
+Save to public/data/sambar-hunting.geojson  
+Update regularly!  

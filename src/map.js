@@ -52,7 +52,7 @@ export async function toggleHunting() {
     map.removeLayer(huntingLayer);
   } else {
     if (!huntingLayer) {
-      const res = await fetch('/data/sambar-hunting.geojson');
+      const res = await fetch(`${import.meta.env.BASE_URL}data/sambar-hunting.geojson`);
       const data = await res.json();
       huntingLayer = L.geoJSON(data, {
         style: feature => ({

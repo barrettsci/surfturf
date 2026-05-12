@@ -22,6 +22,7 @@ export function initMap() {
   });
 
   L.control.zoom({ position: 'bottomright' }).addTo(map);
+  L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
 
   topoLayer = L.tileLayer(TOPO_URL, {
     attribution: '© <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',

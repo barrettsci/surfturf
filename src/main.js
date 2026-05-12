@@ -56,8 +56,14 @@ document.getElementById('satellite-toggle').addEventListener('change', () => {
   toggleSatellite();
 });
 
-document.getElementById('hunting-toggle').addEventListener('change', async () => {
+document.getElementById('hunting-toggle').addEventListener('change', async (e) => {
+  const spinner = document.getElementById('sambar-spinner');
+  const toggle = e.target;
+  toggle.disabled = true;
+  spinner.classList.remove('hidden');
   await toggleHunting();
+  spinner.classList.add('hidden');
+  toggle.disabled = false;
 });
 
 document.getElementById('export-btn').addEventListener('click', async () => {

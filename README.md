@@ -1,6 +1,6 @@
-# Map App
+# SurfTurf
 
-A mobile-first PWA for tracking hunting, fishing, and diving locations offline. Runs in Chrome on Android — no app store required.
+A mobile-first PWA for tracking fishing, diving and hunting locations offline. Runs in Chrome on Android — no app store required.
 
 ## Features
 
